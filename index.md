@@ -207,7 +207,7 @@ Additionally, a package descriptor MAY include the following keys and values:
       }]
 
 * `publisher` - like contributors 
-* `root` - a base URI used to resolve `resources` that specify relative paths in
+* `base` - a base URI used to resolve `resources` that specify relative paths in
   the event that the actual data files specified by those resource paths are not
   located in the same directory in which the descriptor file (`datapackage.json`)
   resides.
@@ -257,7 +257,7 @@ specify the location of the associated data file (either online, 'relative'
 * `path`: unix-style ('/') relative path to the resource. Path MUST be a relative
   path, that is relative to the directory in which the descriptor file
   (`datapackage.json`) listing this file resides, or relative to the URI specified
-  by the optional `root` property (if it is defined).
+  by the optional `base` property (if it is defined).
 * `data`: (inline) a field containing the data directly inline in the
   `datapackage.json` file. Further details below.
 
@@ -265,7 +265,7 @@ specify the location of the associated data file (either online, 'relative'
 NOTE: the use of a `url` allows a data package to reference data not necessarily
 contained locally in the Data Package. Of course, the `path` attribute may still
 be used for Data Packages located online (in this case it determines the
-relative URL) in combination with the optional `root` property if it is defined.
+relative URL) in combination with the optional `base` property if it is defined.
 </div>
 
 <div class="alert" markdown="block">
