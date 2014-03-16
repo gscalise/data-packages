@@ -1,8 +1,8 @@
 ---
 title: Data Packages
 layout: default
-version: 1.0-beta.7
-last_update: 12 January 2014
+version: 1.0-beta.9
+last_update: 27 January 2014
 created: 12 November 2007
 author:
  - Rufus Pollock (Open Knowledge Foundation Labs)
@@ -27,6 +27,7 @@ explicit changes please fork the [git repo][repo] and submit a pull request.
 
 ### Changelog
 
+- `1.0-beta.8`: `last_modified` and `modified` removed following this [issue](https://github.com/dataprotocols/dataprotocols/issues/83)
 - `1.0-beta.7`: `dependencies` renamed to `dataDependencies` following this [issue](https://github.com/dataprotocols/dataprotocols/issues/75)
 - `1.0-beta.5` -> `1.0-beta.6`: Moved `resources` from MUST to MAY
 
@@ -194,7 +195,6 @@ Additionally, a package descriptor MAY include the following keys and values:
     
 * `keywords` - an Array of string keywords to assist users searching for the
   package in catalogs.
-* `last_modified`: iso 8601 formatted date (or datetime) when this data package was last updated
 * `image` - a link to an image to use for this data package
 
 ### Optional Fields 
@@ -317,16 +317,18 @@ A data package MAY contain any number of additional fields. Common fields includ
 * `format`: 'csv', 'xls', 'json' etc. Would be expected to be the the standard file
   extension for this type of resource.
 * `mediatype`: the mediatype/mimetype of the resource e.g. 'text/csv', 'application/vnd.ms-excel'as 
-* encoding: character encoding of the resource data file (default is assumption
-  of utf8) 
+* `encoding`: specify the character encoding of a resource data file. The values should be one of 
+ the "Preferred MIME Names" for [a character encoding registered with IANA][iana]. If no 
+ value for this key is specified then the default is UTF-8.
 * `bytes`: size of the file in bytes
 * `hash`: the md5 hash for this resource
-* `modified`: ISO 8601 string for last modified timestamp of the resource
 * `schema`: a schema for the resource - see below for more on this in the case of
   tabular data.
 * `sources`: as for data package metadata.
 * `licenses`: as for data package metadata. If not specified the resource
   inherits from the data package.
+
+[iana]: http://www.iana.org/assignments/character-sets/character-sets.xhtml
 
 ### Inline Data
 
@@ -517,8 +519,8 @@ the following fields in its package descriptor file.
 * licenses - array of licenses under which the package is provided. Each
   license is a hash with a "type" property specifying the type of license and a
   url property linking to the actual text. If the license is one of the
-  [http://www.opensource.org/licenses/alphabetical official open source
-  licenses] the official license name or its abbreviation may be explicated
+  [official open source licenses](http://www.opensource.org/licenses/alphabetical)
+  the official license name or its abbreviation may be explicated
   with the "type" property.  If an abbreviation is provided (in parentheses),
   the abbreviation must be used.
 * repositories - Array of repositories where the package can be located. Each
