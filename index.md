@@ -169,7 +169,9 @@ be included in every package descriptor:
   or a `licenses` field but NOT both.
   
   **This property is not legally binding and does not necessarily mean your
-  package is licensed under the terms you define in this property.**
+  package is licensed under the terms you define in this property but you
+  it may be used and acted upon automatically and consistency between this
+  property and the license of the package is important**
   
   * `license` MUST be a string and its value SHOULD be an [Open Definition license
     ID][od-licenses] (preferably one that is [Open Definition
@@ -177,10 +179,14 @@ be included in every package descriptor:
 
         { "license" : "PDDL-1.0" }
 
-  * `licenses` MUST be an array. Each entry MUST be a hash with a `type` and a
-    `url` property linking to the actual text. The `type` SHOULD be an [Open
-    Definition license ID][od-license] if an ID exists for the license and
-    otherwise may be the general license name or identifier. Here is an
+  * `licenses` MUST be an array. Each entry MUST be a hash with a `type`.
+    The `type` SHOULD be an [Open Definition license ID][od-license] if
+    an ID exists for the license. If another license name or identifier
+    is used as `type` then the `url` property MUST link to the actual 
+    license text. The `url` property MAY be specified when used in combination
+    with an [Open Definition license ID][od-license].
+
+    Here is an
     Example:
 
         "licenses": [{
